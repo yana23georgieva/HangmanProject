@@ -1,0 +1,4 @@
+red
+dog
+bird
+window
