@@ -2,3 +2,8 @@ red
 dog
 bird
 window
+stone
+sun
+unicorn
+city
+laptop

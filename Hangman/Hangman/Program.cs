@@ -23,6 +23,7 @@ namespace Hangman
             {
                 writer.CustomWrite("_ ");
             }
+            writer.CustomWriteLine("");
 
             List<char> allLetters = new List<char>();
             int errors = 0;
@@ -37,6 +38,7 @@ namespace Hangman
 
                 if (allLetters.Contains(letter))
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     writer.CustomWriteLine($"The letter exist.");
                 }
                 else
@@ -44,6 +46,11 @@ namespace Hangman
                     if (!randomWord.Contains(letter))
                     {
                         errors++;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
                     }
 
                     allLetters.Add(letter);
@@ -60,12 +67,16 @@ namespace Hangman
 
             if (errors == 6)
             {
-                writer.CustomWriteLine("You lose. Good luck next time!");
+                Console.ForegroundColor = ConsoleColor.Red;
+                writer.CustomWriteLine($"You lose. Good luck next time! The word was {randomWord}");
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 writer.CustomWriteLine("You won. Congratulations!");
             }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         private static string PrintHangman(int errors)
